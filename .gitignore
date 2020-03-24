@@ -1,0 +1,13 @@
+# Maven output
+target/
+
+# Package files #
+*.jar
+
+# IDE-specific files and directories
+.project
+.classpath
+.settings/
+
+# Compiled class file
+*.class
