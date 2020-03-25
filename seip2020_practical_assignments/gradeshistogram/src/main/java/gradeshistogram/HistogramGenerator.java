@@ -20,7 +20,7 @@ import org.jfree.data.xy.XYSeriesCollection;
  * The HistogramGenerator program implements an application that reads a file
  * from the user and generates a grades' histogram
  * 
- * @author perik
+ * @author Aikaterini Perikou
  *
  */
 public class HistogramGenerator {
@@ -47,13 +47,11 @@ public class HistogramGenerator {
 		 */
 		XYSeries data = new XYSeries("grades");
 
-		/*
-		 * The maxValue is the greatest value(grade) of the array
-		 */
+		// find the highest grade from input Integer array
 		int maxValue = dataValues[0];
 		for (int i = 1; i < dataValues.length; i++) {
 			if (dataValues[i] > maxValue) {
-				maxValue = dataValues[i];// finds the highest grade
+				maxValue = dataValues[i];
 			}
 		}
 
@@ -160,7 +158,7 @@ public class HistogramGenerator {
 	 * This is the main method which makes use of generateChart method. Reads from
 	 * the user a file with grades and calls a method in order to generate the chart.
 	 * 
-	 * @param args
+	 * @param args  command line arguments
 	 * @throws FileNotFoundException
 	 */
 	public static void main(String[] args) throws FileNotFoundException {
