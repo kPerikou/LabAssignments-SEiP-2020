@@ -15,7 +15,7 @@ The first assignment concerns a Java application that reads a file, which contai
 
 First assignment its a multi-module Maven project. It consists of a parent Maven project `seip2020_practical_assignments` and a sub-module `gradeshistogram`.
 
-The sub-module its the one which generates the histogram. In order to accomplish this is using the JFREEChart library.
+The sub-module its the one which generates the histogram. In order to accomplish this is using the [JFreeChart](https://mvnrepository.com/artifact/org.jfree/jfreechart) library.
 
 In order to build all modules execute these command in the repository root directory:
 
