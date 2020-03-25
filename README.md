@@ -17,7 +17,7 @@ First assignment its a multi-module Maven project. It consists of a parent Maven
 
 The sub-module its the one which generates the histogram. In order to accomplish this is using the [JFreeChart](https://mvnrepository.com/artifact/org.jfree/jfreechart) library.
 
-In order to build all modules execute these command in the repository root directory:
+In order to build all modules execute these command in the repository `seip2020_practical_assignments` directory:
 
 ```
 mvn package
