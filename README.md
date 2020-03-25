@@ -13,12 +13,11 @@ The first assignment concerns a Java application that reads a file, which contai
 
 ### Running the project
 
-First assignment its a multi-module Maven project. It consists of a parent Maven project seip2020_practical_assignments and a sub-module gradeshistogram.
+First assignment its a multi-module Maven project. It consists of a parent Maven project `seip2020_practical_assignments` and a sub-module `gradeshistogram`.
 
 The sub-module its the one which generates the histogram. In order to accomplish this is using the JFREEChart library.
 
-In order to build all modules execute these command int the repository root directory
-
+In order to build all modules execute these command in the repository root directory:
 
 ```
 mvn package
@@ -29,8 +28,7 @@ This command generates a jar file in sub-module's corresponding target (gradeshi
 
 ### Grades' histogram
 
-This module uses the `maven-assembly-plugin` for packaging the external dependency, which is required, into the
-main .jar output file. For this plugin, you need to define the class that contains the main method.
+This module uses the `maven-assembly-plugin` for packaging the external dependency, which is required, into the main .jar output file. For this plugin, you need to define the class that contains the main method.
 
 ```xml
 <plugin>
