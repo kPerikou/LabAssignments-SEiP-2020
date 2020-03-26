@@ -5,8 +5,8 @@
 	<artifactId>seip2020_practical_assignments</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>Chart Project</name>
-	<description>A parent maven simple project</description>
+	<name>Software Engineering in Practice assignments - 2020</name>
+	<description>A parent Maven project which contains all the assignments for the SEiP course as sub-modules.</description>
 	<modules>
 		<module>gradeshistogram</module>
 	</modules>

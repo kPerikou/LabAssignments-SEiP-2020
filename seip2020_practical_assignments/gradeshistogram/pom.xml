@@ -7,7 +7,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>gradeshistogram</artifactId>
-	<name>Chart Project - Module</name>
+	<name>First assignment - Grades Histogram</name>
 	<description>This module generates the histogram of a given file with grades.</description>
 
 	<properties>
@@ -51,5 +51,5 @@
 			</plugin>
 		</plugins>
 	</build>
-	
+
 </project>
