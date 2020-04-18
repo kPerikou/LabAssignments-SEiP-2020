@@ -9,6 +9,7 @@
 	<description>A parent Maven project which contains all the assignments for the SEiP course as sub-modules.</description>
 	<modules>
 		<module>gradeshistogram</module>
+		<module>unittesting</module>
 	</modules>
 
 	<properties>
@@ -16,4 +17,15 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
+
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
 </project>
