@@ -33,7 +33,8 @@ public class FileIOTest {
 
 	/*
 	 * A test case for the exceptions which are caused when the input file is
-	 * invalid (the file doesn't exist). Testing the exception is performed with a @Rule
+	 * invalid (the file doesn't exist). Testing the exception is performed with
+	 * a @Rule
 	 */
 	@Test
 	public void testReadFileInvalidInput() {
@@ -53,6 +54,17 @@ public class FileIOTest {
 		thrown.expect(IllegalArgumentException.class);
 		thrown.expectMessage("Given file is empty");
 		fileIO.readFile(emptyInputFilePath);
+	}
+
+	/*
+	 * A test case that examines the readFile method with input file which contains
+	 * invalid entries (such as strings and doubles).
+	 */
+	@Test
+	public void testReadFileContainsInvalidEntries() {
+		int[] expectedFileElements = new int[] { 1, 2, 3, 4 };
+		String mixedInputFilePath = resourcesPath + "mixed_input.txt";
+		Assert.assertArrayEquals(expectedFileElements, fileIO.readFile(mixedInputFilePath));
 	}
 
 }
