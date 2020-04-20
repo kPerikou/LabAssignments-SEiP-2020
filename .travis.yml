@@ -13,4 +13,4 @@ before_script:  # Perform commands
   - ls -la
 
 script:         # Build the project
-  - mvn clean package
+  - mvn clean package jacoco:report coveralls:report
