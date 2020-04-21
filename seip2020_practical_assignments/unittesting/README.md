@@ -10,11 +10,9 @@ This module contains 4 Java source files and their respective test files.
   1. ArithmeticOperations 
   2. ArrayOperations
   3. MyMath
-  These are located in the [math package](src/main/java/math) as their functionality concerns math operations.
+ These are located in the [math package](src/main/java/math) as their functionality concerns math operations.
   
-- The fourth Java source file is:
-  4. FileIO
-  This is located in the [io package](src/main/java/io).
+- The fourth Java source file is the FileIO and is located in the [io package](src/main/java/io).
 
 For each of those files exists a test class in the corresponding test package, namely in the [test math package](src/test/java/math) and [test io package](src/test/java/io).
 
