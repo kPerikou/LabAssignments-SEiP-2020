@@ -58,7 +58,7 @@ java -jar gradeshistogram/target/gradeshistogram-0.0.1-SNAPSHOT-jar-with-depende
 
 Running the above command will result in this chart:
 
-<img src="images/gradesHistogram.png" width="500"/>
+<img src="../../images/gradesHistogram.png" width="500"/>
 
 
 *Note: gradeshistogram-0.0.1-SNAPSHOT.jar is not executable*
