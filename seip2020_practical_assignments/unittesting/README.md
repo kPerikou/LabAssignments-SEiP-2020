@@ -11,19 +11,19 @@ The 3 Java source files are:
 - ArrayOperations
 - MyMath
 
-  These are located in the [math package](src/main/java/math) as their functionality concerns math operations.
+ These are located in the [math package](src/main/java/math) as their functionality concerns math operations.
 
 The fourth Java source file is:
 - FileIO
 
-  This is located in the [io package](src/main/java/io).
+ This is located in the [io package](src/main/java/io).
 
 For each of those files exists a test class in the corresponding test package, namely in the [test math package](src/test/java/math) and [test io package](src/test/java/io).
 
 
 ### Prerequisites
 
-1. Install [Java JDK version 1.8[(https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html) (or later)
+1. Install [Java JDK version 1.8](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html) (or later)
 2. Setup Maven in Windows/Linux/Mac - [guidelines](https://www.baeldung.com/install-maven-on-windows-linux-mac)
 3. Clone this repository
 
@@ -36,7 +36,7 @@ In order to build the module unittesting execute this command in the `seip2020_p
 mvn package jacoco:report
 ```
 
-Concerning unit testing, this command:
+Concerning unit testing, the above command:
 1. Creates a report of the code coverage produced by jaCoCo. The report is located in the following path for the unittesting module:
 
    ```
@@ -52,7 +52,7 @@ Concerning unit testing, this command:
    src/test/java
    ```
    
-   <dt>Note:</dt> *Only the test classes with a `Test` suffix which located in the `src/test` will be executed (not the MyMathTestSuite class)*
+   _**Note:** Only the test classes with a `Test` suffix which located in the `src/test` will be executed (not the MyMathTestSuite class)_
 
 
 ### Test project
@@ -63,7 +63,7 @@ In order to run directly the unit tests, execute the following command:
 mvn test
 ```
 
-<dt>Note:</dt> *Only the test classes with a `Test` suffix which located in the `src/test` will be executed (not the MyMathTestSuite class)*
+_**Note:** Only the test classes with a `Test` suffix which located in the `src/test` will be executed (not the MyMathTestSuite class)_
 
 The MyMathTestSuite, which groups the *MyMathTest* and *MyMathFactorialParameterizedTest* test classes, can be executed as following in the `unittesting` directory:
 
