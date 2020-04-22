@@ -10,9 +10,4 @@
 	<name>Second assignment - Unit Testing</name>
 	<description>This module challenges the functionality of a given set of java source files.</description>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
-	</properties>
 </project>
