@@ -40,6 +40,14 @@ public class ArithmeticOperationsTest {
 	public void testDivideNormal() {
 		Assert.assertEquals(2.0, arop.divide(10.0, 5.0), DELTA);
 	}
+	
+	/*
+	 * A test case that examines the divide method with numerator equal to zero.
+	 */
+	@Test
+	public void testDivideShouldReturnZeroOnZeroNumerator() {
+		Assert.assertEquals(0, arop.divide(0, 5.0), DELTA);
+	}
 
 	/*
 	 * A test case for the exceptions which are caused when the input value for
