@@ -58,6 +58,14 @@ public class ArithmeticOperationsTest {
 		Assert.assertEquals(50, arop.multiply(5, 10), DELTA);
 	}
 
+	/*
+	 * A test case that examines the multiply method with input y equal to zero
+	 */
+	@Test
+	public void testMultiplyShouldReturnZeroOnZeroInputY() {
+		Assert.assertEquals(0, arop.multiply(5, 0), DELTA);
+	}
+
 	@Rule
 	public ExpectedException thrown = ExpectedException.none();
 
