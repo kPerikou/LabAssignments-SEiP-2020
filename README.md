@@ -1,6 +1,6 @@
 # LabAssignments-SEiP-2020
 
-[![Build Status](https://travis-ci.com/kPerikou/LabAssignments-SEiP-2020.svg?token=DpvK7MZEyuqM9YLSgpbh&branch=development)](https://travis-ci.com/kPerikou/LabAssignments-SEiP-2020)
+[![Build Status](https://travis-ci.com/kPerikou/LabAssignments-SEiP-2020.svg?token=DpvK7MZEyuqM9YLSgpbh&branch=master)](https://travis-ci.com/kPerikou/LabAssignments-SEiP-2020)
 
 This repository serves as a storage for my assignments for the needs of the Software Engineering in Practice (SEiP) course during my 6th semester offered by the Department of Management Science & Technology of Athens University of Economics and Business.
 
