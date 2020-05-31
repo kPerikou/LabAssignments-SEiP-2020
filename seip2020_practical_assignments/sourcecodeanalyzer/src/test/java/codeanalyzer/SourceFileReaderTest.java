@@ -16,8 +16,6 @@ public class SourceFileReaderTest {
 	SourceFileReader sfr = null;
 	private static List<String> expectedList;
 	private static String expectedString;
-	private final static String TYPE_WEB = "web";
-	private final static String TYPE_LOCAL = "local";
 	private final static String TEST_CLASS_LOCAL = "src/test/resources/TestClass.java";
 	private final static String TEST_CLASS_WEB ="https://drive.google.com/uc?export=download&id=1z51FZXqPyun4oeB7ERFlOgfcoDfLLLhg";
 	
@@ -30,7 +28,7 @@ public class SourceFileReaderTest {
 	@Test
 	public void testReadFileIntoListLocal() throws IOException {
 		//read a locally stored file into a List
-		sfr = new SourceFileReader(TYPE_LOCAL);
+		sfr = new LocalSourceFileReader();
 		List<String> actualList = sfr.readFileIntoList(TEST_CLASS_LOCAL);
 		
 		String[] expecteds = expectedList.stream().toArray(String[]::new);
@@ -42,7 +40,7 @@ public class SourceFileReaderTest {
 	@Test
 	public void testReadFileIntoStringLocal() throws IOException {
 		//read a locally stored file into a String
-		sfr = new SourceFileReader(TYPE_LOCAL);
+		sfr = new LocalSourceFileReader();
 		String actuals = sfr.readFileIntoString(TEST_CLASS_LOCAL);
 				
 		assertEquals(expectedString, actuals);
@@ -51,7 +49,7 @@ public class SourceFileReaderTest {
 	@Test
 	public void testReadFileIntoListWeb() throws IOException {
 		//read a file stored in the web into a List
-		sfr = new SourceFileReader(TYPE_WEB);
+		sfr = new WebSourceFileReader();
 		List<String> actualList = sfr.readFileIntoList(TEST_CLASS_WEB);
 		
 		String[] expecteds = expectedList.stream().toArray(String[]::new);
@@ -63,7 +61,7 @@ public class SourceFileReaderTest {
 	@Test
 	public void testReadFileIntoStringWeb() throws IOException {
 		//read a file stored in the web into a String
-		sfr = new SourceFileReader(TYPE_WEB);
+		sfr = new WebSourceFileReader();
 		String actuals = sfr.readFileIntoString(TEST_CLASS_WEB);
 				
 		assertEquals(expectedString, actuals);
@@ -72,7 +70,7 @@ public class SourceFileReaderTest {
 	@Test
 	public void testReadFileIntoListNull() throws IOException {
 		//give a none existing type to cause a null List return
-		sfr = new SourceFileReader("non-existing-type");
+		sfr = new NullSourceFileReader();
 		List<String> actualList = sfr.readFileIntoList("any-filepath");
 		
 		assertNull(actualList);
@@ -81,7 +79,7 @@ public class SourceFileReaderTest {
 	@Test
 	public void testReadFileIntoStringNull() throws IOException {
 		//give a none existing type to cause a null String return
-		sfr = new SourceFileReader("non-existing-type");
+		sfr = new NullSourceFileReader();
 		String actualString = sfr.readFileIntoString("any-filepath");
 		
 		assertNull(actualString);

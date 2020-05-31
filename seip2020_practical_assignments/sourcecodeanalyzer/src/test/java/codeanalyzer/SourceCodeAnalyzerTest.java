@@ -20,8 +20,10 @@ public class SourceCodeAnalyzerTest {
 	private final static String TYPE_REGEX = "regex";
 	private final static String TYPE_STRCOMP = "strcomp";
 	private final static String TEST_CLASS = "src/test/resources/TestClass.java";
-	private SourceCodeAnalyzer sca = new SourceCodeAnalyzer("local");
-	
+
+	SourceFileReaderFactory sfrFactory = new SourceFileReaderFactory();
+	SourceFileReader sfr = sfrFactory.createSourceFileReader("local");
+	SourceCodeAnalyzer sca = new SourceCodeAnalyzer(sfr);
 	
 	@Test
 	public void testCalculateRegexLOC() throws IOException {

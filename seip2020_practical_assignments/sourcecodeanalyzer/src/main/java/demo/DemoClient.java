@@ -26,7 +26,10 @@ public class DemoClient {
 			System.exit(1);
 		}
 
-		SourceCodeAnalyzer analyzer = new SourceCodeAnalyzer(sourceFileLocation);
+		SourceFileReaderFactory sfrFactory = new SourceFileReaderFactory();
+		SourceFileReader sfr = sfrFactory.createSourceFileReader(sourceFileLocation);
+		
+		SourceCodeAnalyzer analyzer = new SourceCodeAnalyzer(sfr);
 		int loc = analyzer.calculateLOC(filepath, sourceCodeAnalyzerType);
 		int nom = analyzer.calculateNOM(filepath, sourceCodeAnalyzerType);
 		int noc = analyzer.calculateNOC(filepath, sourceCodeAnalyzerType);
