@@ -28,11 +28,17 @@ public class DemoClient {
 
 		SourceFileReaderFactory sfrFactory = new SourceFileReaderFactory();
 		SourceFileReader sfr = sfrFactory.createSourceFileReader(sourceFileLocation);
-		
-		SourceCodeAnalyzer analyzer = new SourceCodeAnalyzer(sfr);
-		int loc = analyzer.calculateLOC(filepath, sourceCodeAnalyzerType);
-		int nom = analyzer.calculateNOM(filepath, sourceCodeAnalyzerType);
-		int noc = analyzer.calculateNOC(filepath, sourceCodeAnalyzerType);
+	
+		SourceCodeAnalyzer sca = null;
+		if (sourceCodeAnalyzerType.contentEquals("regex")) {
+			sca = new RegexAnalyzer(sfr);
+		} else if (sourceCodeAnalyzerType.contentEquals("strcomp")) {
+			sca = new StrCompAnalyzer(sfr);
+		} 
+	
+		int loc = sca.calculateLOC(filepath);
+		int nom = sca.calculateNOM(filepath);
+		int noc = sca.calculateNOC(filepath);
 		
 		Map<String, Integer> metrics = new HashMap<>();
 		metrics.put("loc",loc);

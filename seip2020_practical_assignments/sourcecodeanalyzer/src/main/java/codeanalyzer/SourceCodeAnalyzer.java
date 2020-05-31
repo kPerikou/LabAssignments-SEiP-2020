@@ -1,9 +1,6 @@
 package codeanalyzer;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Analyzes the contents of a Java source code file 
@@ -12,95 +9,41 @@ import java.util.regex.Pattern;
  * The current functionality supports two types of source code analysis,
  * namely regex (with the use of regular expressions) and 
  * strcomp (with the use of string comparison).
- * This class deliberately contains code smells and violations of design principles. 
+ *  
  * @author agkortzis
+ * @author Aikaterini Perikou
  *
  */
-public class SourceCodeAnalyzer {
+public abstract class SourceCodeAnalyzer {
 	
 	protected SourceFileReader fileReader;
 	
 	public SourceCodeAnalyzer(SourceFileReader sfr) {
 		this.fileReader = sfr;
 	}
-		
-	public int calculateLOC(String filepath, String analyzerType) throws IOException {
-		if(analyzerType.equals("regex")) {
-			String sourceCode = this.fileReader.readFileIntoString(filepath);
-			Pattern pattern = Pattern.compile("((//.*)|(/\\*.*)|(\\*+.*))");
-	        Matcher nonCodeLinesMatcher = pattern.matcher(sourceCode);
-
-	        int nonCodeLinesCounter = 0;
-	        while (nonCodeLinesMatcher.find()) {
-	        	nonCodeLinesCounter++;
-	        }
-			
-	        int sourceFileLength = sourceCode.split("\n").length;
-	        int loc =  sourceFileLength - nonCodeLinesCounter;
-	        
-			return loc;
-		} else if (analyzerType.equals("strcomp")) {
-			List<String> sourceCodeList = this.fileReader.readFileIntoList(filepath);
-			int nonCodeLinesCounter = 0;
-			for (String line : sourceCodeList) {
-				line = line.trim(); //clear all leading and trailing white spaces
-				if (line.startsWith("//") || line.startsWith("/*") || line.startsWith("*") || line.equals("{") || line.equals("}") || line.equals(""))
-					nonCodeLinesCounter++;
-			}
-			int loc = sourceCodeList.size() - nonCodeLinesCounter;
-			return loc; 
-		}
-		return -1;
-	}
 	
-	public int calculateNOM(String filepath, String analyzerType) throws IOException {
-		if(analyzerType.equals("regex")) {
-			String sourceCode = this.fileReader.readFileIntoString(filepath);
-			Pattern pattern = Pattern.compile(".*(public |protected |private |static )?[\\w\\<\\>\\[\\]]+\\s+(\\w+) *\\([^\\)]*\\) *(\\{?|[^;]).*"); 
-	        Matcher methodSignatures = pattern.matcher(sourceCode);
-
-	        int methodCounter = 0;
-	        while (methodSignatures.find()) {
-	        	methodCounter++;
-	        }
-			return methodCounter;
-		} else if (analyzerType.equals("strcomp")) {
-			List<String> sourceCodeList = this.fileReader.readFileIntoList(filepath);
-			int methodCounter = 0;
-			for (String line : sourceCodeList) {
-				line = line.trim(); //clear all leading and trailing white spaces
-				if ( ((line.contains("public") || line.contains("private") || line.contains("protected"))
-						|| line.contains("void") || line.contains("int") || line.contains("String"))
-					&& line.contains("(") && line.contains(")") && line.contains("{") )
-					methodCounter++;
-			}
-			return methodCounter; 
-		}
-		return -1;
-	}
+	/**
+	 * Calculates the lines which has some specific symbols ("//", "/*","*","{","}","") in a Java source file's code
+	 * @param filepath the url of the file
+	 * @return an integer, the number of code lines
+	 * @throws IOException
+	 */
+	public abstract int calculateLOC(String filepath) throws IOException;
 	
-	public int calculateNOC(String filepath, String analyzerType) throws IOException {
-		if(analyzerType.equals("regex")) {
-			String sourceCode = this.fileReader.readFileIntoString(filepath);
-			Pattern pattern = Pattern.compile(".*\\s*class\\s+.*"); 
-	        Matcher classSignatures = pattern.matcher(sourceCode);
-
-	        int classCounter = 0;
-	        while (classSignatures.find()) {
-	        	classCounter++;
-	        }
-			return classCounter;
-		} else if (analyzerType.equals("strcomp")) {
-			List<String> sourceCodeList = this.fileReader.readFileIntoList(filepath);
-			int classCounter = 0;
-			for (String line : sourceCodeList) {
-				line = line.trim(); //remove leading and trailing white spaces
-				if ((line.startsWith("class ") || line.contains(" class ")) && line.contains("{")) {
-					classCounter++;
-				}
-			}
-			return classCounter; 
-		}
-		return -1;
-	}
+	/**
+	 * Calculates the methods of a Java source file's code
+	 * @param filepath the url of the file
+	 * @return an integer, the number of methods of the given file
+	 * @throws IOException
+	 */
+	public abstract int calculateNOM(String filepath) throws IOException;
+	
+	/**
+	 * Calculates the classes of a Java source file's code
+	 * @param filepath the url of the file
+	 * @return an integer, the number of classes of the given file
+	 * @throws IOException
+	 */
+	public abstract int calculateNOC(String filepath) throws IOException;
+	
 }
