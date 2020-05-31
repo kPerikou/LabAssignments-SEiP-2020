@@ -6,34 +6,55 @@ import java.io.IOException;
 import java.util.Map;
 
 /**
- * Exports (writes) the metrics to a given output.
- * The output can be CSV or JSON files.
- * This class deliberately contains code smells and violations of design principles. 
+ * Exports (writes) the metrics to a given output. The output can be CSV or JSON
+ * files.
+ * 
  * @author agkortzis
- *
+ * @author Aikaterini Perikou
  */
-public class MetricsExporter {
-	
-	public void writeFile(String outputType, Map<String, Integer> metrics, String filepath) {
-		if (outputType.equals("csv")) {
-			writeCsv(metrics, filepath);
-		} else if (outputType.equals("json")) {
-			writeJson(metrics, filepath);
-		} else {
-			throw new IllegalArgumentException("Unknown type : " + outputType);
-		}
-	}
-	
-	private void writeCsv(Map<String, Integer> metrics, String filepath) {
+
+public interface MetricsExporter {
+
+	/**
+	 * Exports the metrics into a file
+	 * 
+	 * @param Map<String,
+	 *            Integer> metrics, which contains the number of lines, the number
+	 *            of methods and the number of classes of a given file
+	 * @param filepath
+	 *            the url of the file
+	 */
+	public void writeFile(Map<String, Integer> metrics, String filepath);
+}
+
+/**
+ * Exports (writes) the metrics to a given output. The output can be CSV files.
+ * 
+ * @author agkortzis
+ * @author Aikaterini Perikou
+ */
+class CsvExporter implements MetricsExporter {
+
+	/**
+	 * Exports the metrics into a CSV file
+	 * 
+	 * @param Map<String,
+	 *            Integer> metrics, which contains the number of lines, the number
+	 *            of methods and the number of classes of a given file
+	 * @param filepath
+	 *            the url of the file
+	 */
+	@Override
+	public void writeFile(Map<String, Integer> metrics, String filepath) {
 		File outputFile = new File(filepath + ".csv");
 		StringBuilder metricsNames = new StringBuilder();
 		StringBuilder metricsValues = new StringBuilder();
-		
+
 		for (Map.Entry<String, Integer> entry : metrics.entrySet()) {
 			metricsNames.append(entry.getKey() + ",");
-			metricsValues.append(entry.getValue()+",");
+			metricsValues.append(entry.getValue() + ",");
 		}
-		
+
 		try {
 			FileWriter writer = new FileWriter(outputFile);
 			writer.append(metricsNames + "\n");
@@ -43,12 +64,15 @@ public class MetricsExporter {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-	}
-	
-	private void writeJson(Map<String, Integer> metrics, String filepath) {
-		// Functionality not implemented yet
-		// No need to implement it for the assignment
-	}
 
+	}
+}
+
+
+class NullExporter implements MetricsExporter {
+	
+	@Override
+	public void writeFile(Map<String, Integer> metrics, String filepath) {
+		throw new IllegalArgumentException("Unknown ouptut file type");
+	}
 }
