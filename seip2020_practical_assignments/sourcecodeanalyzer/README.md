@@ -106,4 +106,6 @@ In particular:
 Due to the three above functionalities and the rise of the number of classes, the complexity of the system has been increased. So, in order to minimize client's complexity the Facade pattern is applied.
 With this pattern, is defined a simplified interface for the system to the client and the independence is enhanced. This was achieved by adding the SourceFileAnalyzer class. With this class the subsystem is decoupled from client.
 
+#### The following diagram reflects all the above mentioned:
 
+<img src="../../images/Diagram.png" width="500"/>
